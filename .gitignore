@@ -58,3 +58,9 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+SaladOilGameProject/.vsconfig
+SaladOilGameProject/Library/*
+SaladOilGameProject/Temp/*
+SaladOilGameProject/Obj/*
+SaladOilGameProject/Logs/*
+SaladOilGameProject/UserSettings/*
