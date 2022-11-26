@@ -1,19 +1,19 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 
 [Serializable]
 [CreateAssetMenu(fileName = "Item", menuName = "CreateItem")]
 public class Item : ScriptableObject
 {
-    public enum Type // À‘•‚·‚éItem‚Ìí—Ş
+    public enum Type // å®Ÿè£…ã™ã‚‹Itemã®ç¨®é¡
     {
         OilItem,
         GomaItem,
         
     }
 
-    public Type type; // í—Ş
-    public String infomation; // î•ñ
+    public Type type; // ç¨®é¡
+    public String infomation; // æƒ…å ±
 
     public Item(Item item)
     {
