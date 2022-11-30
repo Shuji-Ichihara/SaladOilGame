@@ -53,8 +53,10 @@ public class PlayerControllerTest : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+#if UNITY_EDITOR
         Debug.Log(other.gameObject.tag);
         Debug.Log("大豆の所持数 - " + _beanCount);
+#endif
         if (other.gameObject.CompareTag("Bean"))
         {
             BeansCountUp();
