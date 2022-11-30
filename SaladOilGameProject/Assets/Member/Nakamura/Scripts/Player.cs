@@ -85,5 +85,4 @@ public class Player : MonoBehaviour
         _isTimerFlag = true;
         Debug.Log("true");
     }
-
 }
