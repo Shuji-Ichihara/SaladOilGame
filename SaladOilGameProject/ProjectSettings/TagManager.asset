@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
+<<<<<<< HEAD
   tags: []
+=======
+  tags:
+  - Item
+  - Bean
+>>>>>>> origin/feature/ichihara/Item
   layers:
   - Default
   - TransparentFX
