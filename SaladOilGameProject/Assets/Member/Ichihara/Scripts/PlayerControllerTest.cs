@@ -3,30 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(CircleCollider2D))]
 public class PlayerControllerTest : MonoBehaviour
 {
-    // Player の移動速度
+    [Header("プレイヤーの移動速度")]
     [SerializeField]
-    private float _playerMoveSpeed = default;
+    private float _playerMoveSpeed = default;   // Player の移動速度
+
+    public int BeanCount => _beanCount;
+    private int _beanCount = default;           // 現在の大豆の所持数
+    
+    [Header("豆を持てる最大個数")]
+    [SerializeField]
+    private int _maxBeanCount = 10;             // 大豆の最大所持数
 
     private Rigidbody2D _rb2D = null;
-    private CircleCollider2D _circleCol2D = null;
-
-    // 現在の大豆の所持数
-    public int BeanCount => _beanCount;
-    private int _beanCount = default;
-    // 大豆の最大所持数
-    private int _maxBeanCount = default;
 
     // Start is called before the first frame update
     void Start()
     {
         _rb2D = GetComponent<Rigidbody2D>();
-        _circleCol2D = GetComponent<CircleCollider2D>();
         _rb2D.gravityScale = 0.0f;
-        _rb2D.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         _rb2D.freezeRotation = true;
+        _beanCount = 0;
     }
 
     private void FixedUpdate()
@@ -51,14 +49,16 @@ public class PlayerControllerTest : MonoBehaviour
     {
         if (_beanCount >= _maxBeanCount) { return; }
         _beanCount++;
-        Debug.Log("大豆の所持数" + _beanCount);
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log(other.gameObject.tag);
+        Debug.Log("大豆の所持数 - " + _beanCount);
         if (other.gameObject.CompareTag("Bean"))
         {
             BeansCountUp();
         }
+        else if (other.gameObject.CompareTag("Bean") == false) { return; }
     }
 }
