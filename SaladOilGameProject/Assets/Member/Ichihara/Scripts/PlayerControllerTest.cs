@@ -22,8 +22,8 @@ public class PlayerControllerTest : MonoBehaviour
     void Start()
     {
         _rb2D = GetComponent<Rigidbody2D>();
-        _rb2D.gravityScale = 0.0f;
-        _rb2D.freezeRotation = true;
+        _rb2D.gravityScale = 0.0f;              // 重力無効化
+        _rb2D.freezeRotation = true;            // 回転無効化
         _beanCount = 0;
     }
 
@@ -41,20 +41,29 @@ public class PlayerControllerTest : MonoBehaviour
         float moveY = Input.GetAxis("Vertical");
 
         gameObject.transform.Translate(new Vector3(moveX * _playerMoveSpeed * Time.deltaTime
-                                                  , moveY * _playerMoveSpeed * Time.deltaTime
-                                                  , 0.0f));
+                                                  ,moveY * _playerMoveSpeed * Time.deltaTime
+                                                  ,0.0f));
     }
 
+    /// <summary>
+    /// 豆の所持数のカウント処理
+    /// </summary>
     private void BeansCountUp()
     {
         if (_beanCount >= _maxBeanCount) { return; }
         _beanCount++;
     }
 
+    /// <summary>
+    /// 豆に接触した時、 BeansCountUp を呼び出す
+    /// </summary>
+    /// <param name="other">接触したオブジェクト</param>
     private void OnTriggerEnter2D(Collider2D other)
     {
+#if UNITY_EDITOR
         Debug.Log(other.gameObject.tag);
         Debug.Log("大豆の所持数 - " + _beanCount);
+#endif
         if (other.gameObject.CompareTag("Bean"))
         {
             BeansCountUp();
