@@ -93,7 +93,7 @@ public class Player : MonoBehaviour
         _isTimerFlag = true;
         Debug.Log("true ŒÜ•b‚½‚Á‚½‚æ");
     }
-<<<<<<< HEAD
+/*<<<<<<< HEAD
 =======
 
     /// <summary>
@@ -112,5 +112,5 @@ public class Player : MonoBehaviour
         StartCoroutine("Timer");
 
     }
->>>>>>> origin/feature/Nakamura
+>>>>>>> origin/feature/Nakamura*/
 }

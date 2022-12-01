@@ -28380,4 +28380,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad5e1be47e28b6145be7234d26908730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Get_Water: 0
+  Set_Water: 0
+  Set_Ground: 0
+  _maxBeanCount: 10
+  _maxSaladaCount: 5
   _Salada: {fileID: 2288987266171642865}

@@ -11,12 +11,24 @@ public class NewPlayerMove : MonoBehaviour
 {
     private float speed = 0.5f;        //移動速度
 
+    private Rigidbody2D rb;
+
+    public bool Get_Water = false;
+    public bool Set_Water = false;
+    public bool Set_Ground = false;
+    public static bool Revival = false;
+
     public int BeanCount => _beanCount;
     private int _beanCount = default;           // 現在の大豆の所持数
 
     [Header("豆を持てる最大個数")]
     [SerializeField]
     private int _maxBeanCount = 10;             // 大豆の最大所持数
+
+    [SerializeField, Header("最大で持てるサラダ油の数")]
+    private int _maxSaladaCount = 5;
+
+    private int _saladaCount = 0;       //サラダ油の数
 
     [SerializeField]
     private GameObject _Salada;         //サラダ油製造機
@@ -30,6 +42,12 @@ public class NewPlayerMove : MonoBehaviour
     {
         _beanCount = 0;
         StartCoroutine("Timer");
+        Get_Water = false;
+        Set_Water = false;
+        Set_Ground = false;
+        Revival = false;
+
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -56,6 +74,28 @@ public class NewPlayerMove : MonoBehaviour
 
         transform.position = position;
 
+        if (Set_Water == true)
+        {
+            if (Input.GetKey(KeyCode.B))
+            {
+                Debug.Log("水ゲットだぜ");
+                Get_Water = true;
+            }
+        }
+
+        if (Set_Ground == true)
+        {
+            if (Input.GetKey(KeyCode.B) && Get_Water)
+            {
+                Debug.Log("畑に水をスローイン");
+                Get_Water = false;
+                Revival = true;
+            }
+            else if (Input.GetKey(KeyCode.B) && !Get_Water)
+            {
+                Debug.Log("水持って無いよ");
+            }
+        }
     }
 
     private void BeansCountUp()
@@ -87,11 +127,11 @@ public class NewPlayerMove : MonoBehaviour
             if (_isTimerFlag == true && Input.GetKey(KeyCode.A))   //五秒たってキー押したら走る
             {
 
-                //ここに製造機の処理やったらたぶんいけるはずずずzzz...
+                if (_maxSaladaCount > _saladaCount)
+                {
+                    StartCoroutine("SaladaCount");
+                }
 
-                _isTimerFlag = false;
-                Debug.Log("false");
-                StartCoroutine("Timer");
 
             }
 
@@ -107,14 +147,62 @@ public class NewPlayerMove : MonoBehaviour
         _isTimerFlag = true;
         Debug.Log("true");
     }
+
+    /// <summary>
+    /// サラダのカウント
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator SaladaCount()
+    {
+        
+        _isTimerFlag = false;
+        Debug.Log("false リセットしたよ");
+        yield return new WaitForSeconds(10.0f);
+        _saladaCount++;
+        Debug.Log(_saladaCount);
+
+        StartCoroutine("Timer");
+
+    }
+
     //豆を拾った処理
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Beans")
         {
-            Debug.Log("拾った");
+            Debug.Log("当たった");
             GameManger.beans -= 1;
             Destroy(collision.gameObject);
+        }
+    }
+
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Water")
+        {
+            Debug.Log("水に触れてま～す");
+            Set_Water = true;
+        }
+
+        if (collision.gameObject.tag == "Ground")
+        {
+            Debug.Log("畑の周りだよ～");
+            Set_Ground = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Water")
+        {
+            Debug.Log("離れたよ");
+            Set_Water = false;
+        }
+        if (collision.gameObject.tag == "Ground")
+        {
+            Debug.Log("離れたよ");
+            Set_Ground = false;
         }
     }
 }
