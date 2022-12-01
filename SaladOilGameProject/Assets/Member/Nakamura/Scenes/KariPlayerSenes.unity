@@ -260,6 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8d591cc0c0c1f7409200f61e46e06cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxSaladaCount: 1
   _Salada: {fileID: 0}
 --- !u!114 &561933141
 MonoBehaviour:

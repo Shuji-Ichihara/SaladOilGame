@@ -7,10 +7,18 @@ using UnityEngine;
  仮にプレイヤーとオブジェクト（後のサラダ油製造機を作ってもらい）
 プレイヤー側は5秒たったら油製造機を触れるようになり
 触れている状態でaキーを押したら製造機の処理を開始する。処理が始まったらプレイヤーのフラグをオフにする。
+
+サラダ油製造機処理の続き
+処理が始まって10秒経ったら1個サラダ油（出来るたびにサラダ油の所持数を増やしていく感じ）が出来るようにする。
  */
 public class Player : MonoBehaviour
 {
     private float speed = 0.5f;        //移動速度
+
+    [SerializeField,Header("最大で持てるサラダ油の数")]
+    private int _maxSaladaCount = 5;        
+
+    private int _saladaCount = 0;       //サラダ油の数
 
     [SerializeField]
     private GameObject _Salada;         //サラダ油製造機
@@ -64,11 +72,11 @@ public class Player : MonoBehaviour
             if (_isTimerFlag == true && Input.GetKey(KeyCode.A))   //五秒たってキー押したら走る
             {
 
-                //ここに製造機の処理やったらたぶんいけるはずずずzzz...
+                if(_maxSaladaCount　> _saladaCount)
+                {
+                    StartCoroutine("SaladaCount");
+                }
 
-                _isTimerFlag = false;
-                Debug.Log("false");
-                StartCoroutine("Timer");
 
             }
 
@@ -83,6 +91,26 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(5.0f);
         _isTimerFlag = true;
-        Debug.Log("true");
+        Debug.Log("true 五秒たったよ");
     }
+<<<<<<< HEAD
+=======
+
+    /// <summary>
+    /// サラダのカウント
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator SaladaCount()
+    {
+        
+        _isTimerFlag = false;
+        Debug.Log("false リセットしたよ");
+        yield return new WaitForSeconds(10.0f);
+        _saladaCount++;
+        Debug.Log(_saladaCount);
+
+        StartCoroutine("Timer");
+
+    }
+>>>>>>> origin/feature/Nakamura
 }
