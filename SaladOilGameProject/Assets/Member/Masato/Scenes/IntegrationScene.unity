@@ -664,6 +664,8 @@ MonoBehaviour:
   karekusaTexture: {fileID: 2800000, guid: e1f23163ad3baff448a853ce81365b73, type: 3}
   tutiTexture: {fileID: 2800000, guid: eb061a95f984fe249885b91ac7bd1a53, type: 3}
   TargetMaterial: {fileID: 2100000, guid: 132776baba9a35b4a8fbb0e217d5e6a0, type: 2}
+  _map1: {fileID: 0}
+  _map2: {fileID: 0}
 --- !u!114 &1589514413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2768,7 +2770,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6753,7 +6755,7 @@ GameObject:
   - component: {fileID: 2288987264542412001}
   m_Layer: 0
   m_Name: Map (9)
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10076,7 +10078,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -15788,7 +15790,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
