@@ -8,13 +8,13 @@ public class PlayerControllerTest : MonoBehaviour
     [Header("プレイヤーの移動速度")]
     [SerializeField]
     private float _playerMoveSpeed = default;   // Player の移動速度
-
-    public int BeanCount => _beanCount;
-    private int _beanCount = default;           // 現在の大豆の所持数
     
     [Header("豆を持てる最大個数")]
     [SerializeField]
     private int _maxBeanCount = 10;             // 大豆の最大所持数
+
+    public static int BeanCount => _beanCount;
+    private static int _beanCount = default;    // 現在の大豆の所持数
 
     private Rigidbody2D _rb2D = null;
 
