@@ -96,6 +96,7 @@ public class NewPlayerMove : MonoBehaviour
                 Debug.Log("水持って無いよ");
             }
         }
+       
     }
 
     private void BeansCountUp()

@@ -11,6 +11,10 @@ public class Test2 : MonoBehaviour
     public Material TargetMaterial;
     public GameObject _map1;
     public GameObject _map2;
+
+    public Material colorA;
+    public Material colorB;
+    public Material colorC;
     private void Start()
     {
         TargetMaterial.SetTexture("_MainTex", kusaTexture);
@@ -33,6 +37,13 @@ public class Test2 : MonoBehaviour
             TargetMaterial.color = new Color(1f, 0.6f, 0f, 1f);
             _map1.AddComponent<BoxCollider2D>();
             _map2.AddComponent<BoxCollider2D>();
+        }
+
+        if (NewPlayerMove.Revival)
+        {
+            //time = 0f;
+            GetComponent<Renderer>().material.color = colorA.color;
+            PlayerMove.Revival = false;
         }
     }
 }
