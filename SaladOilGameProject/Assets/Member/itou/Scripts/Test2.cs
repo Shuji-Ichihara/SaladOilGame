@@ -9,7 +9,8 @@ public class Test2 : MonoBehaviour
     public Texture karekusaTexture;
     public Texture tutiTexture;
     public Material TargetMaterial;
-
+    public GameObject _map1;
+    public GameObject _map2;
     private void Start()
     {
         TargetMaterial.SetTexture("_MainTex", kusaTexture);
@@ -30,6 +31,8 @@ public class Test2 : MonoBehaviour
             seconds = 0;
             TargetMaterial.SetTexture("_MainTex", tutiTexture);
             TargetMaterial.color = new Color(1f, 0.6f, 0f, 1f);
+            _map1.AddComponent<BoxCollider2D>();
+            _map2.AddComponent<BoxCollider2D>();
         }
     }
 }
