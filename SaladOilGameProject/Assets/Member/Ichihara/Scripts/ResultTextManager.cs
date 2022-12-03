@@ -18,6 +18,6 @@ public class ResultTextManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _score.text = PlayerControllerTest.BeanCount.ToString();
+        _score.text = NewPlayerMove._saladaCount.ToString();
     }
 }

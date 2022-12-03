@@ -28,7 +28,7 @@ public class NewPlayerMove : MonoBehaviour
     [SerializeField, Header("最大で持てるサラダ油の数")]
     private int _maxSaladaCount = 5;
 
-    private int _saladaCount = 0;       //サラダ油の数
+    public static int _saladaCount = 0;       //サラダ油の数
 
     [SerializeField]
     private GameObject _Salada;         //サラダ油製造機

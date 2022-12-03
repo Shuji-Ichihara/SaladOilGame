@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 
 public class Timer : MonoBehaviour
 {
@@ -23,5 +25,9 @@ public class Timer : MonoBehaviour
 		seconds = (int)totalTime;
 		timerText.text = seconds.ToString();
 
+		if (totalTime < 0)
+		{
+			SceneManager.LoadScene("ResultScene");
+		}
 	}
 }
