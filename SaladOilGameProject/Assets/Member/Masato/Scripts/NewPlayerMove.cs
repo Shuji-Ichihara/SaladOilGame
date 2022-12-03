@@ -9,7 +9,7 @@ using UnityEngine;
  */
 public class NewPlayerMove : MonoBehaviour
 {
-    private float speed = 0.5f;        //移動速度
+    private float speed = 1f;        //移動速度
 
     private Rigidbody2D rb;
 
@@ -41,7 +41,7 @@ public class NewPlayerMove : MonoBehaviour
     void Start()
     {
         _beanCount = 0;
-        StartCoroutine("Timer");
+        //StartCoroutine("Timer");
         Get_Water = false;
         Set_Water = false;
         Set_Ground = false;
@@ -123,7 +123,7 @@ public class NewPlayerMove : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Machine"))
         {
-            //Debug.Log("Machineタグだよ!!");
+            Debug.Log("Machineタグだよ!!");
 
             if (_isTimerFlag == true && Input.GetKey(KeyCode.A))   //五秒たってキー押したら走る
             {
@@ -142,12 +142,12 @@ public class NewPlayerMove : MonoBehaviour
     /// タイマー機能
     /// </summary>
     /// <returns></returns>
-    IEnumerator Timer()
+    /*IEnumerator Timer()
     {
         yield return new WaitForSeconds(5.0f);
         _isTimerFlag = true;
         Debug.Log("true");
-    }
+    }*/
 
     /// <summary>
     /// サラダのカウント
@@ -162,17 +162,18 @@ public class NewPlayerMove : MonoBehaviour
         _saladaCount++;
         Debug.Log(_saladaCount);
 
-        StartCoroutine("Timer");
+        //StartCoroutine("Timer");
 
     }
 
     //豆を拾った処理
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Beans")
+        if (collision.gameObject.tag == "Bean")
         {
             Debug.Log("当たった");
             GameManger.beans -= 1;
+            _isTimerFlag = true;
             Destroy(collision.gameObject);
         }
     }

@@ -93,8 +93,8 @@ public class Player : MonoBehaviour
         _isTimerFlag = true;
         Debug.Log("true 五秒たったよ");
     }
-/*<<<<<<< HEAD
-=======
+
+
 
     /// <summary>
     /// サラダのカウント
@@ -112,5 +112,5 @@ public class Player : MonoBehaviour
         StartCoroutine("Timer");
 
     }
->>>>>>> origin/feature/Nakamura*/
+
 }

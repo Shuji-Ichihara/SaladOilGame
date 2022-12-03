@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3444608364828620750}
   m_Layer: 0
   m_Name: Circle
-  m_TagString: Beans
+  m_TagString: Bean
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
